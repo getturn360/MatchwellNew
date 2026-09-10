@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
@@ -13,55 +13,91 @@ const HeroParticles = dynamic(() => import("@/components/HeroParticles"), {
 
 const words = ["Crafting", "Timeless", "Elegance"];
 
+function markTitleReady() {
+  window.dispatchEvent(new Event("matchwell:hero-title-ready"));
+}
+
 export default function HeroSection() {
   const root = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const progress = useRef(0);
 
+  useLayoutEffect(() => {
+    progress.current = 0;
+  }, []);
+
   useEffect(() => {
     registerGsap();
-    const ctx = gsap.context(() => {
-      gsap.from(".hero-media", {
-        scale: 1.18,
-        filter: "blur(16px)",
-        duration: 2.2,
-        ease: "power3.out",
-      });
-      gsap.from(".hero-word", {
-        yPercent: 120,
-        opacity: 0,
-        stagger: 0.12,
-        duration: 1.1,
-        ease: "power4.out",
-        delay: 0.2,
-      });
+    progress.current = 0;
+    const rootEl = root.current;
+    if (!rootEl) return;
 
-      const reduced = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const ctx = gsap.context(() => {
+      gsap.set(".hero-media", { scale: 1.05, filter: "blur(0px)" });
+      gsap.set(".hero-word", { yPercent: 0, opacity: 1 });
+      gsap.set(".hero-title, .hero-kicker, .hero-sub, .hero-actions", {
+        opacity: 1,
+        y: 0,
+      });
 
       if (reduced) {
+        markTitleReady();
         gsap.to(".hero-media", {
           scale: 1.06,
           ease: "none",
           scrollTrigger: {
-            trigger: root.current,
+            trigger: rootEl,
             start: "top top",
             end: "bottom top",
             scrub: true,
+            invalidateOnRefresh: true,
           },
         });
         return;
       }
 
+      gsap.fromTo(
+        ".hero-media",
+        { scale: 1.18, filter: "blur(16px)" },
+        {
+          scale: 1.05,
+          filter: "blur(0px)",
+          duration: 1.6,
+          ease: "power3.out",
+          overwrite: "auto",
+        },
+      );
+
+      gsap.fromTo(
+        ".hero-word",
+        { yPercent: 120, opacity: 0 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.95,
+          ease: "power4.out",
+          delay: 0.12,
+          overwrite: "auto",
+          onComplete: markTitleReady,
+        },
+      );
+
       const timeline = gsap.timeline({
         scrollTrigger: {
-          trigger: root.current,
+          trigger: rootEl,
           start: "top top",
           end: "+=45%",
           pin: true,
-          scrub: 1.05,
-          anticipatePin: 1,
+          pinSpacing: true,
+          scrub: 0.85,
+          anticipatePin: 0,
+          invalidateOnRefresh: true,
+          fastScrollEnd: true,
           onUpdate: (self) => {
             progress.current = self.progress;
           },
@@ -80,7 +116,14 @@ export default function HeroSection() {
         0.75,
       );
     }, root);
-    return () => ctx.revert();
+
+    const fallback = window.setTimeout(markTitleReady, 1400);
+
+    return () => {
+      window.clearTimeout(fallback);
+      progress.current = 0;
+      ctx.revert();
+    };
   }, []);
 
   return (

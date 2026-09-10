@@ -253,16 +253,40 @@ export default function HeroParticles({ textRef, progressRef }: Props) {
       raf = window.requestAnimationFrame(tick);
     };
 
+    const titleSettled = () => {
+      const word = headline.querySelector<HTMLElement>(".hero-word");
+      if (!word) return false;
+      const style = window.getComputedStyle(word);
+      const opacity = Number.parseFloat(style.opacity);
+      const matrix = style.transform;
+      const translated =
+        matrix.startsWith("matrix") &&
+        matrix !== "none" &&
+        Math.abs(Number.parseFloat(matrix.split(",")[5] ?? "0")) > 2;
+      return opacity > 0.9 && !translated;
+    };
+
     let started = false;
+    let attempts = 0;
+    let retryTimer = 0;
     const start = () => {
+      if (!running || started) return;
       resize();
-      if (particles.length < 30 && running) {
-        window.setTimeout(start, 180);
+      attempts += 1;
+      if (attempts < 20 && (!titleSettled() || particles.length < 30)) {
+        retryTimer = window.setTimeout(start, 120);
         return;
       }
-      if (started) return;
       started = true;
       tick();
+    };
+
+    const onTitleReady = () => {
+      if (started) {
+        resize();
+        return;
+      }
+      start();
     };
 
     const onVisibility = () => {
@@ -277,11 +301,14 @@ export default function HeroParticles({ textRef, progressRef }: Props) {
     };
 
     void document.fonts.ready.then(() => window.requestAnimationFrame(start));
+    window.addEventListener("matchwell:hero-title-ready", onTitleReady);
     window.addEventListener("resize", resize);
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
       running = false;
+      window.clearTimeout(retryTimer);
       window.cancelAnimationFrame(raf);
+      window.removeEventListener("matchwell:hero-title-ready", onTitleReady);
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", onVisibility);
     };

@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
+import { registerGsap, ScrollTrigger } from "@/animations/gsap";
 
 const ManufacturingSection = dynamic(
   () => import("@/sections/ManufacturingSection"),
@@ -35,6 +37,16 @@ const FaqSection = dynamic(() => import("@/sections/FaqSection"), {
 });
 
 export default function HomeBelowFold() {
+  useEffect(() => {
+    registerGsap();
+    const frame = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+    const late = window.setTimeout(() => ScrollTrigger.refresh(), 280);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(late);
+    };
+  }, []);
+
   return (
     <>
       <ManufacturingSection />
