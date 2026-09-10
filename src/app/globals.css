@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --black: #070707;
+  --charcoal: #111111;
+  --steel: #8a8d91;
+  --walnut: #5c3d2e;
+  --white: #f4f1ea;
+  --copper: #c48a5c;
+}
+
+@theme inline {
+  --color-black: var(--black);
+  --color-charcoal: var(--charcoal);
+  --color-steel: var(--steel);
+  --color-walnut: var(--walnut);
+  --color-soft: var(--white);
+  --color-copper: var(--copper);
+  --font-heading: var(--font-space);
+  --font-sans: var(--font-inter);
+}
+
+html,
+body {
+  background: #070707;
+  color: #f4f1ea;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.font-heading {
+  font-family: var(--font-space), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--copper);
+  color: #070707;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.marquee-track {
+  animation: marquee 36s linear infinite;
+}
+
+.group:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+html.loader-lock,
+html.loader-lock body {
+  overflow: hidden !important;
+}
+
+.page-loader-leave {
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader-leave {
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.12s linear;
+  }
+}
+
+@keyframes route-load {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(420%);
+  }
+}
+
+.route-loading-bar {
+  animation: route-load 1s ease-in-out infinite;
+}
