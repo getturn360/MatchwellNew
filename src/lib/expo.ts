@@ -31,9 +31,9 @@ export const expoEditions: ExpoEdition[] = [
     edition: 8,
     label: "HIFF 2026",
     status: "upcoming",
-    dates: "19, 20, 21 Sept 2026",
+    dates: "24, 25, 26 October 2026",
     venue: "CODISSIA Complex",
-    city: "Coimbatore",
+    city: "Bangalore",
     cover: "/products/wardrobe.jpg",
     mapQuery: "CODISSIA Trade Fair Complex Coimbatore",
     excerpt:
