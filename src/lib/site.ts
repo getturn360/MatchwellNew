@@ -6,7 +6,12 @@ export const site = {
   phonePrimary: "9745936872",
   phoneSecondary: "9946000862",
   whatsapp: "919745936872",
+  email: "info@matchwellfurniture.in",
   brochure: "/brochure/Matchwell-Furniture.pdf",
+  social: {
+    instagram: "https://www.instagram.com/matchwellfurniture/",
+    facebook: "https://www.facebook.com/matchwellfurniture",
+  },
   address:
     "5/660, Matchwell Furniture, Near Kolankonathappupankave, Kuriyod, Kollam 691534, Kerala, India",
   branches: ["Kollam", "Calicut", "Wayanad", "Ernakulam"],

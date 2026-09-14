@@ -29,6 +29,11 @@ export default function ContactSection() {
               {site.phoneSecondary}
             </a>
           </p>
+          <p>
+            <a href={`mailto:${site.email}`} data-cursor="hover">
+              {site.email}
+            </a>
+          </p>
           <p>{site.branches.join(" / ")}</p>
           <div className="flex flex-wrap gap-3">
             <AnimatedButton href={`https://wa.me/${site.whatsapp}`}>

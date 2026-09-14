@@ -5,12 +5,19 @@ export type ExpoEdition = {
   label: string;
   status: "upcoming" | "past";
   dates: string;
+  time: string;
+  endDates: string;
+  endTime: string;
   venue: string;
   city: string;
   cover: string;
   mapQuery: string;
   excerpt: string;
   paragraphs: string[];
+  organizer: string;
+  role: string;
+  objectives: string;
+  focus: string[];
   highlights: Array<{ label: string; value: string }>;
   photoSlugs: string[];
 };
@@ -32,6 +39,9 @@ export const expoEditions: ExpoEdition[] = [
     label: "HIFF 2026",
     status: "upcoming",
     dates: "24, 25, 26 October 2026",
+    time: "10:00 am",
+    endDates: "26 October 2026",
+    endTime: "6:00 pm",
     venue: "CODISSIA Complex",
     city: "Bangalore",
     cover: "/products/wardrobe.jpg",
@@ -42,11 +52,21 @@ export const expoEditions: ExpoEdition[] = [
       "The 8th Hindustan International Furniture Fair brings India’s finished-furniture trade back to CODISSIA Complex, Coimbatore. Matchwell Furniture will be on the floor as an exhibitor — not as the organiser — with wooden wardrobes, kitchens, beds, and office joinery from Kollam.",
       "Come to the stall to see pieces, talk timber and finish, and leave with a path to a custom order. WhatsApp us before you travel if you want a time with the team.",
     ],
+    organizer: "HIFF Trade and Events",
+    role: "Exhibitor",
+    objectives:
+      "To show Kollam timber on the national floor, meet trade and families, and start drawings for custom wooden pieces.",
+    focus: [
+      "Modular wardrobes and storage in seasoned hardwood",
+      "Wooden kitchens built for Kerala heat and daily use",
+      "Beds, dining, and living pieces you can sit with",
+      "Custom joinery measured from the stall",
+    ],
     highlights: [
       { label: "Role", value: "Exhibitor" },
       { label: "Fair", value: "8th HIFF" },
-      { label: "Dates", value: "19–21 Sept" },
-      { label: "City", value: "Coimbatore" },
+      { label: "Dates", value: "24–26 Oct" },
+      { label: "City", value: "Bangalore" },
     ],
     photoSlugs: [
       "walk-in-wardrobe",
@@ -64,6 +84,9 @@ export const expoEditions: ExpoEdition[] = [
     label: "HIFF 2025",
     status: "past",
     dates: "20, 21, 22 Sept 2025",
+    time: "10:00 am",
+    endDates: "22 Sept 2025",
+    endTime: "6:00 pm",
     venue: "CODISSIA Complex",
     city: "Coimbatore",
     cover: "/products/kitchen.jpg",
@@ -73,6 +96,16 @@ export const expoEditions: ExpoEdition[] = [
     paragraphs: [
       "HIFF 2025, the 7th Hindustan International Furniture Fair, ran 20–22 September at CODISSIA Complex, Coimbatore. Matchwell took a stall as a participating manufacturer from Kollam.",
       "Trade visitors and families walked the stand for wooden kitchens, wardrobes, and office pieces. Enquiries from that floor still sit in the workshop drawings.",
+    ],
+    organizer: "HIFF Trade and Events",
+    role: "Exhibitor",
+    objectives:
+      "To show Kollam timber on the national floor, meet trade and families, and start drawings for custom wooden pieces.",
+    focus: [
+      "Teak kitchens and storage walls",
+      "Walk-in wardrobes in hardwood",
+      "Office desks and sideboards",
+      "Pooja cabinets and custom joinery",
     ],
     highlights: [
       { label: "Role", value: "Exhibitor" },
@@ -96,6 +129,9 @@ export const expoEditions: ExpoEdition[] = [
     label: "HIFF 2024",
     status: "past",
     dates: "21, 22, 23 Sept 2024",
+    time: "10:00 am",
+    endDates: "23 Sept 2024",
+    endTime: "6:00 pm",
     venue: "CODISSIA Complex",
     city: "Coimbatore",
     cover: "/gallery/dining.jpg",
@@ -105,6 +141,16 @@ export const expoEditions: ExpoEdition[] = [
     paragraphs: [
       "At the 6th HIFF (21–23 September 2024, CODISSIA Complex), Matchwell exhibited finished wooden furniture for home and office — a Kollam stall among makers from across India.",
       "The floor was about seeing grain in person: dining, living rooms, and storage that does not need a catalogue to explain itself.",
+    ],
+    organizer: "HIFF Trade and Events",
+    role: "Exhibitor",
+    objectives:
+      "To show Kollam timber on the national floor, meet trade and families, and start drawings for custom wooden pieces.",
+    focus: [
+      "Dining for eight and living lounge pieces",
+      "Walnut platform beds",
+      "Media walls and dressing tables",
+      "Boardroom tables in timber",
     ],
     highlights: [
       { label: "Role", value: "Exhibitor" },
@@ -128,6 +174,9 @@ export const expoEditions: ExpoEdition[] = [
     label: "HIFF 2023",
     status: "past",
     dates: "23, 24, 25 Sept 2023",
+    time: "10:00 am",
+    endDates: "25 Sept 2023",
+    endTime: "6:00 pm",
     venue: "CODISSIA Complex",
     city: "Coimbatore",
     cover: "/products/beds.jpg",
@@ -137,6 +186,16 @@ export const expoEditions: ExpoEdition[] = [
     paragraphs: [
       "HIFF 2023 (23–25 September, CODISSIA) was the 5th fair. Matchwell participated with bedroom and storage pieces built in timber in Kollam.",
       "Dealers and homeowners met the stall to talk joinery, moisture, and finishes that last in South Indian rooms.",
+    ],
+    organizer: "HIFF Trade and Events",
+    role: "Exhibitor",
+    objectives:
+      "To show Kollam timber on the national floor, meet trade and families, and start drawings for custom wooden pieces.",
+    focus: [
+      "Solid wood beds and wardrobes",
+      "Study shelves and alcove joinery",
+      "Wooden kitchens",
+      "Storage walls for Kerala homes",
     ],
     highlights: [
       { label: "Role", value: "Exhibitor" },
@@ -160,6 +219,9 @@ export const expoEditions: ExpoEdition[] = [
     label: "HIFF 2022",
     status: "past",
     dates: "24, 25, 26 Sept 2022",
+    time: "10:00 am",
+    endDates: "26 Sept 2022",
+    endTime: "6:00 pm",
     venue: "CODISSIA Complex",
     city: "Coimbatore",
     cover: "/gallery/living.jpg",
@@ -169,6 +231,16 @@ export const expoEditions: ExpoEdition[] = [
     paragraphs: [
       "The 4th HIFF (24–26 September 2022) opened at CODISSIA Complex, Coimbatore. Matchwell exhibited as a participating wooden-furniture maker from Kerala.",
       "Living and office pieces sat on the stall so buyers could judge grain, scale, and finish without a screen.",
+    ],
+    organizer: "HIFF Trade and Events",
+    role: "Exhibitor",
+    objectives:
+      "To show Kollam timber on the national floor, meet trade and families, and start drawings for custom wooden pieces.",
+    focus: [
+      "Living lounge and dining pieces",
+      "Executive desks and boardroom tables",
+      "Sideboards in hardwood",
+      "Custom alcove joinery",
     ],
     highlights: [
       { label: "Role", value: "Exhibitor" },
@@ -192,6 +264,9 @@ export const expoEditions: ExpoEdition[] = [
     label: "HIFF 2018",
     status: "past",
     dates: "8, 9, 10 Dec 2018",
+    time: "10:00 am",
+    endDates: "10 Dec 2018",
+    endTime: "6:00 pm",
     venue: "Adlux International Convention Centre",
     city: "Angamaly, Kochi",
     cover: "/products/office.jpg",
@@ -201,6 +276,16 @@ export const expoEditions: ExpoEdition[] = [
     paragraphs: [
       "HIFF 2018, the 3rd fair, was held 8–10 December at Adlux International Convention Centre, Angamaly, Kochi. Matchwell took part as an exhibitor — a Kollam workshop on a Kerala convention floor.",
       "Office desks, storage, and home pieces met visitors who already knew our showrooms, and many who did not.",
+    ],
+    organizer: "HIFF Trade and Events",
+    role: "Exhibitor",
+    objectives:
+      "To show Kollam timber on the national floor, meet trade and families, and start drawings for custom wooden pieces.",
+    focus: [
+      "Office desks and boardroom tables",
+      "Storage walls and wardrobes",
+      "Pooja cabinets",
+      "Study shelves in timber",
     ],
     highlights: [
       { label: "Role", value: "Exhibitor" },
@@ -224,6 +309,9 @@ export const expoEditions: ExpoEdition[] = [
     label: "HIFF 2017",
     status: "past",
     dates: "8, 9, 10 Dec 2017",
+    time: "10:00 am",
+    endDates: "10 Dec 2017",
+    endTime: "6:00 pm",
     venue: "Lulu International Convention Centre",
     city: "Thrissur",
     cover: "/products/custom.jpg",
@@ -233,6 +321,16 @@ export const expoEditions: ExpoEdition[] = [
     paragraphs: [
       "The 2nd Hindustan International Furniture Fair ran 8–10 December 2017 at Lulu International Convention Centre, Thrissur. Matchwell participated with custom and modular wooden furniture.",
       "Thrissur brought the fair close to home — visitors from central Kerala could walk a stall that already felt like the workshop language they knew.",
+    ],
+    organizer: "HIFF Trade and Events",
+    role: "Exhibitor",
+    objectives:
+      "To show Kollam timber on the national floor, meet trade and families, and start drawings for custom wooden pieces.",
+    focus: [
+      "Custom alcove joinery",
+      "Wooden kitchens",
+      "Dressing tables and dining",
+      "Beds and media walls",
     ],
     highlights: [
       { label: "Role", value: "Exhibitor" },
@@ -256,6 +354,9 @@ export const expoEditions: ExpoEdition[] = [
     label: "HIFF 2016",
     status: "past",
     dates: "8, 9, 10 Dec 2016",
+    time: "10:00 am",
+    endDates: "10 Dec 2016",
+    endTime: "6:00 pm",
     venue: "Lulu International Convention Centre",
     city: "Thrissur",
     cover: "/gallery/conference.jpg",
@@ -265,6 +366,16 @@ export const expoEditions: ExpoEdition[] = [
     paragraphs: [
       "The first Hindustan International Furniture Fair opened 8–10 December 2016 at Lulu International Convention Centre, Thrissur. Matchwell was there as a participating manufacturer, not as the organiser.",
       "Three days of finished timber on a convention floor — the start of a fair Matchwell has returned to as the editions moved from Thrissur to Kochi and Coimbatore.",
+    ],
+    organizer: "HIFF Trade and Events",
+    role: "Exhibitor",
+    objectives:
+      "To show Kollam timber on the national floor, meet trade and families, and start drawings for custom wooden pieces.",
+    focus: [
+      "Boardroom and office timber",
+      "Living lounge pieces",
+      "Wardrobes and kitchens",
+      "Sideboards from the Kollam workshop",
     ],
     highlights: [
       { label: "Role", value: "Exhibitor" },
@@ -288,6 +399,14 @@ export function expoOrdinal(n: number) {
   if (n === 2) return "2nd";
   if (n === 3) return "3rd";
   return `${n}th`;
+}
+
+export function upcomingExpos() {
+  return expoEditions.filter((item) => item.status === "upcoming");
+}
+
+export function pastExpos() {
+  return expoEditions.filter((item) => item.status === "past");
 }
 
 export function getExpo(slug: string) {
