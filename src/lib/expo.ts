@@ -26,7 +26,7 @@ export const expoFair = {
   name: "Hindustan International Furniture Fair",
   short: "HIFF",
   kicker: "Expo / HIFF",
-  heading: "Matchwell at HIFF",
+  heading: "Matchwell at Events",
   intro:
     "Matchwell Furniture exhibits at the Hindustan International Furniture Fair — wooden home and office pieces from the Kollam workshop, on the national floor. We participate. We do not organise the fair.",
 };

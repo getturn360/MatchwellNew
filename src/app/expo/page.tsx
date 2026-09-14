@@ -27,12 +27,12 @@ export default function ExpoIndexPage() {
       <h1 className="mt-4 max-w-4xl font-heading text-5xl tracking-[-0.05em] md:text-7xl">
         {expoFair.heading}
       </h1>
-      <p className="mt-6 max-w-2xl text-sm leading-7 text-white/65">
+      {/* <p className="mt-6 max-w-2xl text-sm leading-7 text-white/65">
         {expoFair.intro}
       </p>
       <p className="mt-4 text-[11px] tracking-[0.2em] text-white/40 uppercase">
         {expoFair.name}
-      </p>
+      </p> */}
 
       {upcoming.length ? (
         <section className="mt-20">
