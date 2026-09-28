@@ -7,6 +7,7 @@ import { manufacturingStages } from "@/lib/site";
 
 export default function ManufacturingSection() {
   const root = useRef<HTMLElement>(null);
+  const viewport = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLDivElement>(null);
 
@@ -16,31 +17,19 @@ export default function ManufacturingSection() {
 
     mm.add("(min-width: 768px)", () => {
       const rootEl = root.current;
+      const viewportEl = viewport.current;
       const trackEl = track.current;
-      if (!rootEl || !trackEl) return;
+      if (!rootEl || !viewportEl || !trackEl) return;
 
-      const panels = Array.from(trackEl.querySelectorAll<HTMLElement>("article"));
-
-      const sizePanels = () => {
-        const width = rootEl.clientWidth;
-        panels.forEach((panel) => {
-          panel.style.width = `${width}px`;
-        });
-      };
-
-      const amount = () => {
-        sizePanels();
-        return Math.max(0, trackEl.scrollWidth - rootEl.clientWidth);
-      };
-
-      sizePanels();
+      const amount = () =>
+        Math.max(0, trackEl.scrollWidth - viewportEl.clientWidth);
 
       const tween = gsap.to(trackEl, {
         x: () => -amount(),
         ease: "none",
         scrollTrigger: {
           trigger: rootEl,
-          start: "top top",
+          start: "top 88px",
           end: () => `+=${amount()}`,
           pin: true,
           pinSpacing: true,
@@ -55,7 +44,7 @@ export default function ManufacturingSection() {
         ease: "none",
         scrollTrigger: {
           trigger: rootEl,
-          start: "top top",
+          start: "top 88px",
           end: () => `+=${amount()}`,
           scrub: true,
           invalidateOnRefresh: true,
@@ -82,50 +71,56 @@ export default function ManufacturingSection() {
     <section
       id="journey"
       ref={root}
-      className="relative overflow-hidden bg-black text-white"
+      className="relative bg-black px-5 pt-16 pb-16 text-white md:px-12 md:pt-6 md:pb-10"
     >
-      <div className="pointer-events-none absolute top-8 right-5 left-5 z-20 md:right-auto md:left-12">
-        <p className="text-[11px] tracking-[0.28em] text-copper uppercase">
-          ( Making / Journey )
-        </p>
-        <h2 className="mt-3 max-w-[18ch] font-heading text-3xl leading-[1.05] tracking-[-0.04em] md:text-5xl">
-          From timber to heirloom
-        </h2>
+      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-[11px] tracking-[0.28em] text-copper uppercase">
+            ( Making / Journey )
+          </p>
+          <h2 className="mt-2 max-w-[18ch] font-heading text-3xl leading-[1.05] tracking-[-0.04em] md:text-4xl">
+            From timber to heirloom
+          </h2>
+        </div>
+        <div className="h-[2px] w-full max-w-xs origin-left bg-white/10">
+          <div ref={bar} className="h-full origin-left scale-x-0 bg-copper" />
+        </div>
       </div>
-      <div className="absolute top-0 right-0 left-0 z-20 h-[2px] bg-white/10">
-        <div ref={bar} className="h-full origin-left scale-x-0 bg-copper" />
-      </div>
-      <div
-        ref={track}
-        className="flex w-full min-w-0 flex-col md:h-screen md:w-max md:flex-row"
-      >
-        {manufacturingStages.map((stage, index) => (
-          <article
-            key={stage.id}
-            className="relative h-[100svh] w-full min-w-0 max-w-full shrink-0 overflow-hidden md:h-screen md:max-w-none"
-          >
-            <Image
-              src={stage.image}
-              alt={stage.title}
-              fill
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/20" />
-            <div className="absolute inset-x-0 bottom-0 px-5 pb-28 md:p-16">
-              <p className="text-[11px] tracking-[0.28em] text-copper">
-                {String(index + 1).padStart(2, "0")} /{" "}
-                {String(manufacturingStages.length).padStart(2, "0")}
-              </p>
-              <h3 className="mt-4 max-w-full font-heading text-4xl leading-[0.95] tracking-[-0.05em] break-words md:text-7xl">
-                {stage.title}
-              </h3>
-              <p className="mt-4 max-w-md text-sm leading-7 text-pretty text-white/70">
-                {stage.copy}
-              </p>
-            </div>
-          </article>
-        ))}
+
+      <div ref={viewport} className="mt-8 overflow-hidden">
+        <div
+          ref={track}
+          className="flex flex-col gap-6 md:w-max md:flex-row md:gap-5"
+        >
+          {manufacturingStages.map((stage, index) => (
+            <article
+              key={stage.id}
+              className="grid overflow-hidden border border-white/10 bg-charcoal md:h-[min(24rem,calc(100svh-16rem))] md:w-[min(860px,78vw)] md:shrink-0 md:grid-cols-[1.2fr_1fr]"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:h-full">
+                <Image
+                  src={stage.image}
+                  alt={stage.title}
+                  fill
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                  className="object-cover object-center"
+                />
+              </div>
+              <div className="flex flex-col justify-end p-6 md:p-8">
+                <p className="text-[11px] tracking-[0.28em] text-copper">
+                  {String(index + 1).padStart(2, "0")} /{" "}
+                  {String(manufacturingStages.length).padStart(2, "0")}
+                </p>
+                <h3 className="mt-3 font-heading text-3xl leading-[0.95] tracking-[-0.05em] md:text-4xl">
+                  {stage.title}
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-7 text-pretty text-white/70">
+                  {stage.copy}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
