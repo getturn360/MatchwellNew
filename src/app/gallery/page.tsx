@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+<<<<<<< HEAD
 import Image from "next/image";
 import { createMetadata } from "@/lib/seo";
 import FadeIn from "@/components/FadeIn";
@@ -53,4 +54,16 @@ export default function GalleryPage() {
       </section>
     </>
   );
+=======
+import GalleryClient from "./GalleryClient";
+
+export const metadata: Metadata = {
+  title: "Gallery",
+  description:
+    "Wooden furniture Matchwell has built for homes and offices across Kerala — wardrobes, kitchens, beds, and custom joinery.",
+};
+
+export default function GalleryPage() {
+  return <GalleryClient />;
+>>>>>>> 4df1b0b53b913383c076abe27fa927cbb6f71e41
 }

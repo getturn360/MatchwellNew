@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import Image from "next/image";
@@ -122,5 +123,18 @@ export default function HomePage() {
         </div>
       </section>
     </>
+=======
+import HeroSection from "@/sections/HeroSection";
+import AboutSection from "@/sections/AboutSection";
+import HomeBelowFold from "@/sections/HomeBelowFold";
+
+export default function Home() {
+  return (
+    <main>
+      <HeroSection />
+      <AboutSection />
+      <HomeBelowFold />
+    </main>
+>>>>>>> 4df1b0b53b913383c076abe27fa927cbb6f71e41
   );
 }

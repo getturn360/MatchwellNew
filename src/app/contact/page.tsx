@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+<<<<<<< HEAD
 import { createMetadata, siteConfig } from "@/lib/seo";
 import FadeIn from "@/components/FadeIn";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
@@ -164,5 +165,20 @@ export default function ContactPage() {
         </div>
       </section>
     </>
+=======
+import ContactSection from "@/sections/ContactSection";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Visit Matchwell Furniture in Kollam or our Kerala showrooms. Call, WhatsApp, or come to the workshop.",
+};
+
+export default function ContactPage() {
+  return (
+    <main>
+      <ContactSection />
+    </main>
+>>>>>>> 4df1b0b53b913383c076abe27fa927cbb6f71e41
   );
 }
