@@ -36,7 +36,7 @@ export default function GalleryClient() {
       </h1>
       <p className="mt-6 max-w-xl text-sm leading-7 text-white/65">
         Wooden furniture made for homes and offices across Kerala — wardrobes,
-        kitchens, beds, and one-off joinery.
+        kitchens, sofas, beds, and one-off joinery.
       </p>
 
       <div className="mt-12 flex flex-wrap gap-2">
@@ -76,7 +76,12 @@ export default function GalleryClient() {
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.4 }}
           >
-            <GalleryGrid items={items} onSelect={setActive} priorityFirst />
+            <GalleryGrid
+              items={items}
+              onSelect={setActive}
+              priorityFirst
+              showCategoryDetails={false}
+            />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -119,9 +124,6 @@ export default function GalleryClient() {
                 <h2 className="font-heading text-3xl tracking-[-0.04em]">
                   {active.title}
                 </h2>
-                <p className="text-[11px] tracking-[0.22em] text-copper uppercase">
-                  {active.category} · {active.place}
-                </p>
               </figcaption>
             </motion.figure>
           </motion.div>

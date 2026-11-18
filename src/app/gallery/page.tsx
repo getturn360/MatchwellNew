@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import GalleryClient from "./GalleryClient";
+import BrandChooser from "@/components/BrandChooser";
 
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Wooden furniture Matchwell has built for homes and offices across Kerala — wardrobes, kitchens, beds, and custom joinery.",
+    "Browse the furniture galleries from Matchwell and Matchora.",
 };
 
 export default function GalleryPage() {
-  return <GalleryClient />;}
+  return <BrandChooser collection="gallery" />;
+}

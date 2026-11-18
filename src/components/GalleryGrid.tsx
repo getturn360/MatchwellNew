@@ -13,6 +13,7 @@ type Props = {
   mosaic?: boolean;
   onSelect?: (item: GalleryItem) => void;
   priorityFirst?: boolean;
+  showCategoryDetails?: boolean;
 };
 
 export default function GalleryGrid({
@@ -20,6 +21,7 @@ export default function GalleryGrid({
   mosaic = false,
   onSelect,
   priorityFirst = false,
+  showCategoryDetails = true,
 }: Props) {
   return (
     <div
@@ -76,10 +78,17 @@ export default function GalleryGrid({
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 transition duration-500 group-hover:opacity-95" />
             <div className="absolute inset-x-0 bottom-0 translate-y-2 p-5 transition duration-500 group-hover:translate-y-0 md:p-7">
-              <p className="text-[10px] tracking-[0.24em] text-copper uppercase">
-                {item.category} · {item.place}
-              </p>
-              <h3 className="mt-2 font-heading text-2xl tracking-[-0.04em] text-white md:text-3xl">
+              {showCategoryDetails ? (
+                <p className="text-[10px] tracking-[0.24em] text-copper uppercase">
+                  {item.category} · {item.place}
+                </p>
+              ) : null}
+              <h3
+                className={cn(
+                  "font-heading text-2xl tracking-[-0.04em] text-white md:text-3xl",
+                  showCategoryDetails && "mt-2",
+                )}
+              >
                 {item.title}
               </h3>
             </div>

@@ -3,6 +3,7 @@ export type GalleryCategory =
   | "Kitchen"
   | "Bedroom"
   | "Living"
+  | "Sofas"
   | "Office"
   | "Custom";
 
@@ -22,6 +23,7 @@ export const galleryCategories: Array<"All" | GalleryCategory> = [
   "Kitchen",
   "Bedroom",
   "Living",
+  "Sofas",
   "Office",
   "Custom",
 ];
@@ -34,6 +36,27 @@ export const galleryItems: GalleryItem[] = [
     place: "Residence, Kollam",
     image: "/products/wardrobe.jpg",
     featured: true,
+  },
+  {
+    slug: "cane-front-wardrobe",
+    title: "Cane-front wardrobe",
+    category: "Wardrobe",
+    place: "Matchwell collection",
+    image: "/gallery/matchwell-cane-wardrobe.webp",
+  },
+  {
+    slug: "mirror-front-wardrobe",
+    title: "Mirror-front wardrobe",
+    category: "Wardrobe",
+    place: "Matchwell collection",
+    image: "/gallery/matchwell-mirror-wardrobe.webp",
+  },
+  {
+    slug: "blue-sectional-sofa",
+    title: "Blue sectional sofa",
+    category: "Sofas",
+    place: "Matchwell collection",
+    image: "/gallery/matchwell-sofa.webp",
   },
   {
     slug: "teak-kitchen",
