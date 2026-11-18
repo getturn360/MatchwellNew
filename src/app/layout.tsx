@@ -1,47 +1,4 @@
 import type { Metadata } from "next";
-<<<<<<< HEAD
-import { Playfair_Display, Inter } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { createMetadata, createLocalBusinessJsonLd } from "@/lib/seo";
-import "./globals.css";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-export const metadata: Metadata = createMetadata({});
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const jsonLd = createLocalBusinessJsonLd();
-
-  return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1 pt-[72px]">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-=======
 import { Inter, Space_Grotesk } from "next/font/google";
 import ClientShell from "@/components/providers/ClientShell";
 import "./globals.css";
@@ -83,9 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${space.variable}`}>
       <body className="bg-black antialiased">
-        <ClientShell>{children}</ClientShell>
->>>>>>> 4df1b0b53b913383c076abe27fa927cbb6f71e41
-      </body>
+        <ClientShell>{children}</ClientShell>      </body>
     </html>
   );
 }
