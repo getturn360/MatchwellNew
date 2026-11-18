@@ -27,7 +27,7 @@ export default function GalleryClient() {
 
   return (
     <main className="relative px-5 pt-32 pb-28 text-white md:px-12">
-      <BrandLogo className="mb-8 h-10 md:h-12" />
+      {/* <BrandLogo className="mb-8 h-10 md:h-12" /> */}
       <p className="text-[11px] tracking-[0.28em] text-copper uppercase">
         ( Gallery )
       </p>

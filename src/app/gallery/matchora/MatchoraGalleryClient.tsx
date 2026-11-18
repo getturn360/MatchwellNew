@@ -72,7 +72,7 @@ export default function MatchoraGalleryClient() {
 
   return (
     <main className="relative px-5 pt-32 pb-28 text-white md:px-12">
-      <div className="relative mb-8 h-24 w-52 bg-[#f5f0e7]">
+      {/* <div className="relative mb-8 h-24 w-52 bg-[#f5f0e7]">
         <Image
           src="/brand/matchora-logo.png"
           alt="Matchora by Matchwell Furnitures"
@@ -81,7 +81,7 @@ export default function MatchoraGalleryClient() {
           sizes="208px"
           className="object-contain p-2"
         />
-      </div>
+      </div> */}
       <p className="text-[11px] tracking-[0.28em] text-copper uppercase">
         ( Matchora / Gallery )
       </p>
