@@ -37,26 +37,50 @@ export default function BrandChooser({ collection }: { collection: Collection })
             : "Browse the craftsmanship and collections of Matchwell and Matchora."}
         </p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {brands.map((brand) => (
+        <div className="mx-auto mt-14 grid max-w-5xl gap-5 ">
+          {brands.map((brand, index) => (
             <Link
               key={brand.name}
               href={`/${collection}/${brand.name.toLowerCase()}`}
-              className="group overflow-hidden border border-white/10 bg-white/[0.03] transition-colors hover:border-copper/60"
+              className={`group transition-colors ${
+                isProducts
+                  ? "grid overflow-hidden rounded-2xl border border-white/10 bg-charcoal shadow-lg shadow-black/20 hover:border-copper/60 md:grid-cols-[42%_1fr]"
+                  : `relative isolate grid min-h-[300px] grid-cols-1 items-center gap-6 rounded-3xl border border-copper/25 bg-[#171311] px-6 py-8 text-center shadow-lg shadow-black/20 transition-colors hover:border-copper/60 md:min-h-[240px] md:gap-0 md:rounded-2xl md:px-8 md:py-7 md:text-left ${
+                      index === 0
+                        ? "md:grid-cols-[220px_minmax(0,1fr)]"
+                        : "md:grid-cols-[minmax(0,1fr)_220px]"
+                    }`
+              }`}
             >
               <div
-                className={`relative aspect-[16/9] overflow-hidden ${brand.background}`}
+                className={`relative ${
+                  isProducts
+                    ? `min-h-[190px] overflow-hidden md:min-h-[260px] ${brand.background}`
+                    : `mx-auto size-40 shrink-0 rounded-full border-4 border-[#f4f1ea] bg-[#f4f1ea] shadow-xl md:size-52 ${
+                        index === 1 ? "md:order-2" : ""
+                      }`
+                }`}
               >
                 <Image
                   src={brand.logo}
                   alt={`${brand.name} logo`}
                   fill
                   loading="eager"
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-contain p-8 transition-transform duration-500 group-hover:scale-[1.03] md:p-12"
+                  sizes="(min-width: 768px) 42vw, 100vw"
+                  className={`object-contain transition-transform duration-500 group-hover:scale-[1.03] ${
+                    isProducts ? "p-8 md:p-10" : "rounded-full p-2"
+                  }`}
                 />
               </div>
-              <div className="flex items-center justify-between gap-4 p-6 md:p-8">
+              <div
+                className={`flex w-full items-center justify-between gap-5 ${
+                  isProducts
+                    ? "border-t border-dashed border-white/15 p-6 md:border-t-0 md:border-l md:p-8"
+                    : index === 0
+                      ? "md:order-2 md:pl-8"
+                      : "md:order-1 md:pr-8"
+                }`}
+              >
                 <div>
                   <p className="text-[10px] tracking-[0.24em] text-copper uppercase">
                     {isProducts ? "Furniture collection" : "Brand gallery"}
@@ -65,12 +89,14 @@ export default function BrandChooser({ collection }: { collection: Collection })
                     {brand.name}
                   </h2>
                   <p className="mt-2 text-sm text-white/55">
-                    {brand.description}
+                    {isProducts
+                      ? brand.description
+                      : `Explore the ${brand.name} gallery`}
                   </p>
                 </div>
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/20 text-white/70 transition group-hover:border-copper group-hover:bg-copper group-hover:text-black">
+                {/* <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-copper/50 text-copper transition group-hover:bg-copper group-hover:text-black">
                   <ArrowUpRight size={20} aria-hidden="true" />
-                </span>
+                </span> */}
               </div>
             </Link>
           ))}
