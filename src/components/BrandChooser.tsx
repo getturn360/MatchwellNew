@@ -44,8 +44,8 @@ export default function BrandChooser({ collection }: { collection: Collection })
               href={`/${collection}/${brand.name.toLowerCase()}`}
               className={`group transition-colors ${
                 isProducts
-                  ? "grid overflow-hidden rounded-2xl border border-white/10 bg-charcoal shadow-lg shadow-black/20 hover:border-copper/60 md:grid-cols-[42%_1fr]"
-                  : `relative isolate grid min-h-[300px] grid-cols-1 items-center gap-6 rounded-3xl border border-copper/25 bg-[#171311] px-6 py-8 text-center shadow-lg shadow-black/20 transition-colors hover:border-copper/60 md:min-h-[240px] md:gap-0 md:rounded-2xl md:px-8 md:py-7 md:text-left ${
+                  ? "grid overflow-hidden rounded-2xl border border-white bg-charcoal shadow-lg shadow-black/20 hover:border-copper/60 md:grid-cols-[42%_1fr]"
+                  : `relative isolate grid min-h-[300px] grid-cols-1 items-center gap-6 rounded-3xl border border-white/60 bg-[#171311] px-6 py-8 text-center shadow-lg shadow-black/20 transition-colors hover:border-copper/60 md:min-h-[240px] md:gap-0 md:rounded-2xl md:px-8 md:py-7 md:text-left ${
                       index === 0
                         ? "md:grid-cols-[220px_minmax(0,1fr)]"
                         : "md:grid-cols-[minmax(0,1fr)_220px]"
